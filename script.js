@@ -26,7 +26,7 @@ const trajets = [
         destination: "Banfora",
         distance: "85 km",
         duree: "1h15",
-        prix: 1200,
+        prix: 1500,
         type: "interieur",
         departures: ["08:00", "11:00", "14:00", "17:00"]
     },
