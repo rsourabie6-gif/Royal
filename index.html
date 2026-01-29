@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Transport - Réservation et Achat de Billets</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/000000/bus.png">
+</head>
+<body>
+    <!-- En-tête -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-bus"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Royal Transport</h1>
+                    <p>Voyagez en toute sécurité</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#trajets">Trajets & Tarifs</a></li>
+                    <li><a href="#reservation">Réservation</a></li>
+                    <li><a href="#achat">Achat de billet</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Section principale -->
+    <main>
+        <!-- Section d'accueil -->
+        <section id="accueil" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Voyagez confortablement avec <span class="highlight">Royal Transport</span></h2>
+                    <p>Des trajets sécurisés et confortables à travers le pays. Réservez ou achetez votre billet en ligne facilement.</p>
+                    <div class="hero-buttons">
+                        <a href="#reservation" class="btn btn-primary">Réserver un billet</a>
+                        <a href="#achat" class="btn btn-secondary">Acheter un billet</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Bus Royal Transport">
+                </div>
+            </div>
+        </section>
+
+        <!-- Section des trajets et tarifs -->
+        <section id="trajets" class="trajets-section">
+            <div class="container">
+                <h2 class="section-title">Nos Trajets et Tarifs</h2>
+                <p class="section-subtitle">Consultez nos destinations et les prix correspondants</p>
+                
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="tous">Tous les trajets</button>
+                    <button class="filter-btn" data-filter="interieur">Intérieur du pays</button>
+                    <button class="filter-btn" data-filter="international">International</button>
+                </div>
+                
+                <div class="trajets-container">
+                    <!-- Les trajets seront générés dynamiquement par JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Section de réservation -->
+        <section id="reservation" class="reservation-section">
+            <div class="container">
+                <h2 class="section-title">Réservation de Billet</h2>
+                <p class="section-subtitle">Réservez votre billet maintenant et payez plus tard</p>
+                
+                <div class="reservation-container">
+                    <div class="form-container">
+                        <form id="reservation-form">
+                            <div class="form-group">
+                                <label for="reservation-nom">Nom complet</label>
+                                <input type="text" id="reservation-nom" placeholder="Votre nom complet" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="reservation-phone">Numéro de téléphone</label>
+                                <input type="tel" id="reservation-phone" placeholder="Votre numéro de téléphone" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="reservation-email">Adresse email</label>
+                                <input type="email" id="reservation-email" placeholder="Votre adresse email" required>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="reservation-depart">Ville de départ</label>
+                                    <select id="reservation-depart" required>
+                                        <option value="" disabled selected>Sélectionnez une ville</option>
+                                        <!-- Options seront ajoutées par JS -->
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="reservation-destination">Ville de destination</label>
+                                    <select id="reservation-destination" required>
+                                        <option value="" disabled selected>Sélectionnez une ville</option>
+                                        <!-- Options seront ajoutées par JS -->
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="reservation-date">Date de voyage</label>
+                                    <input type="date" id="reservation-date" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="reservation-passagers">Nombre de passagers</label>
+                                    <select id="reservation-passagers" required>
+                                        <option value="1">1 Passager</option>
+                                        <option value="2">2 Passagers</option>
+                                        <option value="3">3 Passagers</option>
+                                        <option value="4">4 Passagers</option>
+                                        <option value="5">5 Passagers ou plus</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="reservation-message">Message additionnel (optionnel)</label>
+                                <textarea id="reservation-message" placeholder="Informations supplémentaires..."></textarea>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Réserver maintenant</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div class="info-container">
+                        <h3>Comment réserver ?</h3>
+                        <ul class="steps-list">
+                            <li>
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>Remplissez le formulaire</h4>
+                                    <p>Fournissez vos informations personnelles et les détails de votre voyage.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>Confirmation par WhatsApp</h4>
+                                    <p>Nous vous contacterons sur WhatsApp pour confirmer votre réservation.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>Paiement à l'embarquement</h4>
+                                    <p>Payez votre billet directement à l'embarquement ou via notre agent.</p>
+                                </div>
+                            </li>
+                        </ul>
+                        
+                        <div class="whatsapp-info">
+                            <i class="fab fa-whatsapp"></i>
+                            <p>Notre service WhatsApp: <strong>+226 77 03 09 41</strong></p>
+                            <p>Disponible 24h/24, 7j/7</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section d'achat de billet -->
+        <section id="achat" class="achat-section">
+            <div class="container">
+                <h2 class="section-title">Achat de Billet</h2>
+                <p class="section-subtitle">Achetez votre billet en ligne et recevez-le immédiatement</p>
+                
+                <div class="achat-container">
+                    <div class="form-container">
+                        <form id="achat-form">
+                            <div class="form-group">
+                                <label for="achat-nom">Nom complet</label>
+                                <input type="text" id="achat-nom" placeholder="Votre nom complet" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="achat-phone">Numéro de téléphone</label>
+                                <input type="tel" id="achat-phone" placeholder="Votre numéro de téléphone" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="achat-email">Adresse email</label>
+                                <input type="email" id="achat-email" placeholder="Votre adresse email" required>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="achat-depart">Ville de départ</label>
+                                    <select id="achat-depart" required>
+                                        <option value="" disabled selected>Sélectionnez une ville</option>
+                                        <!-- Options seront ajoutées par JS -->
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="achat-destination">Ville de destination</label>
+                                    <select id="achat-destination" required>
+                                        <option value="" disabled selected>Sélectionnez une ville</option>
+                                        <!-- Options seront ajoutées par JS -->
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="achat-date">Date de voyage</label>
+                                    <input type="date" id="achat-date" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="achat-passagers">Nombre de passagers</label>
+                                    <select id="achat-passagers" required>
+                                        <option value="1">1 Passager</option>
+                                        <option value="2">2 Passagers</option>
+                                        <option value="3">3 Passagers</option>
+                                        <option value="4">4 Passagers</option>
+                                        <option value="5">5 Passagers ou plus</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="achat-type">Type de siège</label>
+                                <select id="achat-type" required>
+                                    <option value="standard">Standard - 5 000 FCFA</option>
+                                    <option value="confort">Confort - 7 500 FCFA</option>
+                                    <option value="vip">VIP - 10 000 FCFA</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Section de paiement (affichée après remplissage du formulaire) -->
+                            <div id="paiement-section" class="hidden">
+                                <h3>Méthode de Paiement</h3>
+                                <div class="paiement-options">
+                                    <div class="paiement-option" data-paiement="orange">
+                                        <div class="paiement-logo">
+                                            <i class="fas fa-mobile-alt"></i>
+                                        </div>
+                                        <p>Orange Money</p>
+                                    </div>
+                                    <div class="paiement-option" data-paiement="moov">
+                                        <div class="paiement-logo">
+                                            <i class="fas fa-mobile-alt"></i>
+                                        </div>
+                                        <p>Moov Money</p>
+                                    </div>
+                                    <div class="paiement-option" data-paiement="wave">
+                                        <div class="paiement-logo">
+                                            <i class="fas fa-wallet"></i>
+                                        </div>
+                                        <p>Wave</p>
+                                    </div>
+                                    <div class="paiement-option" data-paiement="mtn">
+                                        <div class="paiement-logo">
+                                            <i class="fas fa-mobile-alt"></i>
+                                        </div>
+                                        <p>MTN Mobile Money</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="paiement-details hidden" id="paiement-details">
+                                    <div class="form-group">
+                                        <label for="paiement-numero">Numéro de téléphone</label>
+                                        <input type="tel" id="paiement-numero" placeholder="Votre numéro pour le paiement">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="paiement-code">Code de transaction (optionnel)</label>
+                                        <input type="text" id="paiement-code" placeholder="Code de transaction">
+                                    </div>
+                                    
+                                    <div class="paiement-summary">
+                                        <h4>Récapitulatif de paiement</h4>
+                                        <div class="summary-details">
+                                            <div class="summary-item">
+                                                <span>Trajet:</span>
+                                                <span id="summary-trajet">Ouagadougou - Bobo-Dioulasso</span>
+                                            </div>
+                                            <div class="summary-item">
+                                                <span>Passagers:</span>
+                                                <span id="summary-passagers">1</span>
+                                            </div>
+                                            <div class="summary-item">
+                                                <span>Type de siège:</span>
+                                                <span id="summary-type">Standard</span>
+                                            </div>
+                                            <div class="summary-item total">
+                                                <span>Total à payer:</span>
+                                                <span id="summary-total">5 000 FCFA</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-actions">
+                                        <button type="button" id="finaliser-paiement" class="btn btn-primary">Finaliser le paiement</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" id="achat-submit" class="btn btn-primary">Passer à l'achat</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div class="info-container">
+                        <h3>Bénéfices de l'achat en ligne</h3>
+                        <ul class="benefits-list">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <div class="benefit-content">
+                                    <h4>Ticket immédiat</h4>
+                                    <p>Recevez votre billet électronique directement sur WhatsApp après paiement.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <div class="benefit-content">
+                                    <h4>Paiement sécurisé</h4>
+                                    <p>Transactions sécurisées via Orange Money, Moov Money, Wave et MTN.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <div class="benefit-content">
+                                    <h4>Assistance 24/7</h4>
+                                    <p>Notre équipe est disponible sur WhatsApp pour toute assistance.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <div class="benefit-content">
+                                    <h4>Modification facile</h4>
+                                    <p>Modifiez ou annulez votre billet facilement via WhatsApp.</p>
+                                </div>
+                            </li>
+                        </ul>
+                        
+                        <div class="ticket-preview">
+                            <h4>Votre ticket ressemblera à ceci:</h4>
+                            <div class="ticket-sample">
+                                <div class="ticket-header">
+                                    <h5>Royal Transport</h5>
+                                    <p>E-TICKET</p>
+                                </div>
+                                <div class="ticket-body">
+                                    <div class="ticket-info">
+                                        <p><strong>Trajet:</strong> Ouagadougou → Bobo-Dioulasso</p>
+                                        <p><strong>Date:</strong> 15 Juin 2023</p>
+                                        <p><strong>Heure:</strong> 08:00</p>
+                                        <p><strong>Passager:</strong> Jean Dupont</p>
+                                        <p><strong>Siège:</strong> 12A</p>
+                                        <p><strong>Prix:</strong> 5 000 FCFA</p>
+                                    </div>
+                                    <div class="ticket-qr">
+                                        <div class="qr-placeholder">
+                                            <i class="fas fa-qrcode"></i>
+                                        </div>
+                                        <p>Code: RT-2023-ABC123</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section contact -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="section-title">Contactez-nous</h2>
+                <p class="section-subtitle">Nous sommes à votre disposition pour toute information</p>
+                
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>Nos coordonnées</h3>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Téléphone</h4>
+                                <p>+226 25 30 40 50</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <div>
+                                <h4>WhatsApp</h4>
+                                <p>+226 77 03 09 41</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>contact@royaltransport.bf</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Adresse</h4>
+                                <p>Av. de la Nation, Ouagadougou, Burkina Faso</p>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <h3>Envoyez-nous un message</h3>
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <input type="text" placeholder="Votre nom" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" placeholder="Votre email" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" placeholder="Sujet" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea placeholder="Votre message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Envoyer le message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pied de page -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-bus"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h3>Royal Transport</h3>
+                        <p>Voyagez en toute sécurité</p>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#trajets">Trajets & Tarifs</a></li>
+                            <li><a href="#reservation">Réservation</a></li>
+                            <li><a href="#achat">Achat de billet</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Entreprise</h4>
+                        <ul>
+                            <li><a href="#">À propos</a></li>
+                            <li><a href="#">Nos véhicules</a></li>
+                            <li><a href="#">Carrières</a></li>
+                            <li><a href="#">Partenariats</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Conditions générales</a></li>
+                            <li><a href="#">Politique de confidentialité</a></li>
+                            <li><a href="#">Assistance</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Royal Transport. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bouton WhatsApp flottant -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/22677030941" target="_blank" class="whatsapp-btn">
+            <i class="fab fa-whatsapp"></i>
+            <span>Contact WhatsApp</span>
+        </a>
+    </div>
+
+    <!-- Modal pour afficher le ticket -->
+    <div id="ticket-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Votre billet Royal Transport</h2>
+            <div id="ticket-content">
+                <!-- Le contenu du ticket sera généré ici -->
+            </div>
+            <div class="modal-actions">
+                <button id="whatsapp-ticket" class="btn btn-primary">
+                    <i class="fab fa-whatsapp"></i> Envoyer sur WhatsApp
+                </button>
+                <button id="download-ticket" class="btn btn-secondary">
+                    <i class="fas fa-download"></i> Télécharger
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
