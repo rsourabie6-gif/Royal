@@ -16,7 +16,7 @@ const trajets = [
         destination: "Koudougou",
         distance: "100 km",
         duree: "1h30",
-        prix: 1500,
+        prix: 1700,
         type: "interieur",
         departures: ["07:00", "10:00", "13:00", "16:00"]
     },
